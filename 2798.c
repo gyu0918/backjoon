@@ -18,7 +18,7 @@ int	check_card(char card[101], int N, int M)
 			break;
 		else if (sum[i] > M)
 			break ;
-		
+		ddddd
 
 
 

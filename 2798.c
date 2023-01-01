@@ -2,33 +2,24 @@
 
 int	main(void)
 {
-	int	N,M,i,j,k;
-	int	card[100] = { 0, };
-	int	result,max = 0;
+	int	N,M;
+	int	card[100] = { 0 };
+	int	max, result = 0;
 
-	scanf("%d %d",&N,&M);
-	i = 0;
-	j = 0;
-	k = 0;
-	while(i < N)
-		scanf("%d",&card[i++]);
-	i = 0;
-	while (i < N)
+	scanf("%d %d", &N, &M);
+	for(int i = 0; i < N; i++)
+		scanf("%d", &card[i]);
+	for(int i = 0; i < N; i++)
 	{
-		j = i + 1;
-		while(j < N)
+		for(int j = i + 1; j < N; j++)
 		{
-			k = j + 1;
-			while(k < N)
+			for(int k = j + 1; k< N; k++)
 			{
 				max = card[i] + card[j] + card[k];
 				if (max > result && max <= M)
 					result = max;
-				k++;
 			}
-			j++;
 		}
-		i++;
 	}
-	printf("%d",result);
+	printf("%d\n", result);
 }

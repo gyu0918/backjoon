@@ -1,30 +1,33 @@
 #include <stdio.h>
 
-int main()
+int main(void)
 {
-    int i, n;
-    scanf("%d", &n);
-    int sum;
-    i = 1;
-    while (i <= n)
-    {
-        int a = i;
-        sum = i; // 초기화
-        while(a > 0) // 각 자리수 뽑고 sum에 저장하면서 진행
-        {
-            sum = sum + a % 10;
-            a = a / 10;
-        }
-        if (sum == n) // n값이 되었다. i출력
-        {
-            printf("%d", i);
-            break;
-        }
-        if (i == n) // n값을 못찾았다. (배열을 끝까지 돌렸다.)
-        {
-            printf("0");
-            break;
-        }
-        i++;
-    }
+	int	i;
+	int	n;
+	int	result;
+	int	temp;
+	
+	scanf("%d", &n);
+	i = 1;
+	while(i <= n)
+	{
+		temp = i;
+		result = i;
+		while(temp > 0)
+		{
+			result += temp % 10;
+			temp /= 10;
+		}
+		if(result == n)
+		{
+			printf("%d\n", i);
+			break ;
+		}
+		if(i == n)
+		{
+			printf("0");
+			break;
+		}
+		i++;
+	}
 }

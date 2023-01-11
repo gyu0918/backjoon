@@ -12,7 +12,7 @@ int	main()
 	i = 0;
 	while (i < N)
 	{
-		scanf("%s", board[i]);
+		scanf("%s", &board[i]);
 		i++;
 	}
 	temp1 = 0;

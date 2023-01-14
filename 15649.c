@@ -3,7 +3,7 @@
 void	DFS(int	*result, int count, int N, int M)
 {
 	int	i,j;
-	int	exists;
+	int	flag;
 
 	if (count == M)
 	{
@@ -20,15 +20,15 @@ void	DFS(int	*result, int count, int N, int M)
 		i = 1;
 		while (i <= N)
 		{
-			exists = 0;
+			flag = 0;
 			j = 0;
 			while (j < count)
 			{
 				if (result[j] == i)
-					exists = 1;
+					flag = 1;
 				j++;
 			}
-			if (!exists)
+			if (flag == 0)
 			{
 				result[count] = i;
 				DFS(result, count + 1, N, M);

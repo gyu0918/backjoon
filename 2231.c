@@ -2,28 +2,28 @@
 
 int main(void)
 {
-	int	i;
-	int	n;
-	int	result;
-	int	temp;
-	
+	int i;
+	int n;
+	int result;
+	int temp;
+
 	scanf("%d", &n);
 	i = 1;
-	while(i <= n)
+	while (i <= n)
 	{
 		temp = i;
 		result = i;
-		while(temp > 0)
+		while (temp > 0)
 		{
 			result += temp % 10;
 			temp /= 10;
 		}
-		if(result == n)
+		if (result == n)
 		{
 			printf("%d\n", i);
-			break ;
+			break;
 		}
-		if(i == n)
+		if (i == n)
 		{
 			printf("0");
 			break;

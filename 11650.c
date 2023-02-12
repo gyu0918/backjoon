@@ -1,66 +1,45 @@
 #include <stdio.h>
+#include <stdlib.h>
+
+typedef struct 
+{
+    int x;
+    int y;  
+} game;
+
+int compare(const void *a, const void *b)
+{
+    game A = *(game *)a;
+    game B = *(game *)b;
+    if (A.x > B.x)
+        return (1);
+    else if (A.x == B.x)
+    {
+        if (A.y > B.y)
+            return (1);
+        else
+            return (-1);
+    }
+    return (-1);
+}
 
 int main()
 {
-    int N, i, j, temp1;
-    int temp2;
-    int result[][] = {0};
+    int N, i;
 
     scanf("%d", &N);
     i = 0;
+    game arr[N];
     while (i < N)
     {
-        scanf("%d %d", &result[i][0], &result[i][1]);
+        scanf("%d %d", &arr[i].x, &arr[i].y);
         i++;
     }
-    j = 0;
+    qsort(arr, N, sizeof(game), compare);
     i = 0;
     while (i < N)
     {
-        j = i + 1;
-        temp1 = 0;
-        temp2 = 0;
-        while (j < N)
-        {
-            if (result[i][0] > result[j][0])
-            {    
-                temp1 = result[i][0];
-                result[i][0] = result[j][0];
-                result[j][0] = temp1;
-                temp2 = result[i][1];
-                result[i][1] = result[j][1];
-                result[j][1] = temp2;
-            }
-            j++;
-        }
-        i++;
-    }
-    j = 0;
-    i = 0;
-    while (i < N)
-    {
-        j = i + 1;
-        temp1 = 0;
-        temp2 = 0;
-        while (j < N)
-        {
-            if (result[i][1] > result[j][1])
-            {    
-                temp1 = result[i][0];
-                result[i][0] = result[j][0];
-                result[j][0] = temp1;
-                temp2 = result[i][1];
-                result[i][1] = result[j][1];
-                result[j][1] = temp2;
-            }
-            j++;
-        }
-        i++;
-    }
-    i = 0;
-    while (i < N)
-    {
-        printf("%d %d", result[i][0], result[i][1]);
+        printf("%d %d\n", arr[i].x, arr[i].y);
         i++;
     }
     return (0);

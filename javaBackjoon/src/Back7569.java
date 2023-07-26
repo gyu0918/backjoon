@@ -14,7 +14,7 @@ class tomatto{
     }
 }
 
-public class Main {
+public class ddd {
 
     static int M;
     static int N;

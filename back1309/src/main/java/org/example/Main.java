@@ -10,12 +10,17 @@ public class Main {
     static int[][] dp;
 
     public static void main(String[] args) throws IOException{
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         N = Integer.parseInt(br.readLine());
+
         dp = new int[N + 1][3];
 
-//        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-//        int N = Integer.parseInt(br.readLine());
+//      BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+//      int N = Integer.parseInt(br.readLine());
 
 
 

@@ -50,12 +50,18 @@ public class Main{
             visited = new boolean[N][M][K + 1];
 
             //벽 처리 해주기 && 맵그리기   map 에 Integer.parseInt 로 하면 안되나? char에서 인트로 변하는걸로 해야되나
-            for (int i = 0; i < N; i++) {
-                st = new StringTokenizer(br.readLine());
-                for (int j = 0; j < M; j++) {
-                    map[i][j] = Integer.parseInt(st.nextToken());
-//				if (map[i][j] == 1)
-//					visited[i][j] = true;
+//            for (int i = 0; i < N; i++) {
+//                st = new StringTokenizer(br.readLine());
+//                for (int j = 0; j < M; j++) {
+//                    map[i][j] = Integer.parseInt(st.nextToken());
+////				if (map[i][j] == 1)
+////					visited[i][j] = true;
+//                }
+//            }
+            for(int i=0; i<N; i++) {
+                String s = br.readLine();
+                for(int j=0; j<M; j++) {
+                    map[i][j] = s.charAt(j) -'0';
                 }
             }
 

@@ -4,39 +4,47 @@ package org.example;
 // then press Enter. You can now see whitespace characters in your code.
 import java.util.*;
 import java.io.*;
+import java.util.stream.Collectors;
 
-//1. 자주 나오는 단어 일수록 앞에 배치
-//2. 해당 단어의 길이가 길수록 앞에
-//3. 알파벳 단어 순으로 앞에 배
 public class Main {
     public static void main(String[] args) throws IOException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
+
         int N = Integer.parseInt(st.nextToken());
         int M = Integer.parseInt(st.nextToken());
-        String[] str = new String[N];
-        int[] sameCheck = new int[N];
+        //hashMap 사용
+        Map<String, Integer> map = new HashMap<>();
 
-        //M길이 이상 애들만 배열에 넣음
+        //입력 받기
         for (int i = 0; i < N; i++){
             String temp = br.readLine();
             if (temp.length() >= M) {
-                int j = 0;
-                for (; j < i; j++){
-                    if (str[j].equals(temp)){
-                        sameCheck[j]++;
-                        break ;
-                    }
-
-                }
-                str[j] = temp;
-
+                map.put(temp, map.getOrDefault(temp, 0) + 1); // 같은 단어일경우 +1 해준다
             }
         }
+        //조건대로 비교해서 만들어 보기
+        List<String> wordList = map.keySet().stream().collect(Collectors.toList());
 
-        //자주 나오는 순서로 배치 할건데 자주나오는 횟수가 같다면 해당단어길이로 체크하고 3번째는 알파벳 단어순으로체크
-        
+        wordList.sort((o1, o2) -> {
+            int c1 = map.get(o1);  //빈도수
+            int c2 = map.get(o2);  //빈도수
 
+            if (c1 == c2){
+                if (o1.length() == o2.length()){
+                    return o1.compareTo(o2);
+                }
+                return  o2.length() - o1.length();
+            }
+            return c2 - c1;
+        });
+
+        //결과 출력
+        StringBuilder sb = new StringBuilder();
+        for (String word : wordList){
+            sb.append(word).append("\n");
+        }
+        System.out.print(sb);
 
     }
 }
